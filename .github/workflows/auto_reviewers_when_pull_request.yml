@@ -1,0 +1,15 @@
+name: auto-reviewers-when-pull-request
+on:
+  pull_request:
+    types: [opened, ready_for_review]
+jobs:
+  add-reviews:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - run: gh pr edit --add-reviewer @yumemi-ajike,@yusuga
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          NUMBER: ${{ github.event.pull_request.number }}
+
