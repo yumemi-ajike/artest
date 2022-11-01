@@ -9,7 +9,7 @@ jobs:
     steps:
       - run: gh pr edit $NUMBER --add-reviewer @yusuga
         env:
-          GH_TOKEN: ${{ github.GITHUB_ACTIONS_GH_PR_EDIT_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_REPO: ${{ github.repository }}
           NUMBER: ${{ github.event.pull_request.number }}
 
